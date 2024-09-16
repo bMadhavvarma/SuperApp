@@ -1,0 +1,38 @@
+.textAreaContainer {
+    background-color: #F1C75B !important;
+    position: absolute;
+    margin-top: 15px;
+    height: 65vh;
+    width: 25vw;
+    border: none;
+    border-radius: 10px;
+    font-family: Roboto;
+    font-weight: 600;
+    margin-left: 89vh;
+    padding: 10px;
+    box-sizing: border-box; /* Ensure padding is included in height/width */
+    overflow: hidden; /* Prevent overflow of the container */
+}
+
+.textAreaContainer textarea {
+    width: calc(100% - 10px); /* Adjust width to account for scrollbar */
+    height: calc(100% - 10px); /* Adjust height to account for padding */
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: Roboto;
+    font-weight: 400;
+    resize: none;
+    overflow-y: scroll; /* Enable scroll if content exceeds */
+    box-sizing: border-box; /* Ensure padding is included in the textarea size */
+}
+
+/* Scrollbar customization */
+.textAreaContainer textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.textAreaContainer textarea::-webkit-scrollbar-thumb {
+    background-color: #FFE6A6;
+    border-radius: 10px;
+}

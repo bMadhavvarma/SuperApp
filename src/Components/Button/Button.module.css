@@ -1,0 +1,13 @@
+.but{
+    height: 30px;
+    text-align: center;
+    align-items: center;
+    width: 300px;
+    border-radius: 20px;
+    border: none;
+    background-color: #72DB73;
+    margin-top:5px ;
+    font-family: 'roboto';
+    color: aliceblue;
+  font-weight: 600;
+}

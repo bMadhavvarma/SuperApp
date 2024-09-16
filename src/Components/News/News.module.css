@@ -1,0 +1,46 @@
+.newsContainer{
+    color: white;
+    position: absolute;
+    margin-left: 67%;
+    margin-top: 1.0rem;
+    height: 85vh;
+    width: 25vw;
+}
+.topContainer{
+    background-color: rgb(5, 5, 5);
+    height: 45vh;
+}
+.topContainer img{
+    height:100%;
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+}
+.heading {
+    position: absolute;
+    top: 150px;
+    background-color: rgba(0, 0, 0, 0.7); /* Use rgba for semi-transparent background */
+    font-weight: 900;
+    height: 18vh;
+    width: 100%;
+}
+
+.heading h1 {
+    opacity: 1; 
+    color: white; 
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 1.7em;
+    padding: 10px;
+}
+.bottomContainer{
+    background-color: white;
+    height: 40vh;
+    border-radius: 0px 0px 10px 10px;
+    padding: 10px;
+}
+.bottomContainer p{
+color: black;
+font-weight: 400;
+text-align:justify;
+font-family: roboto;
+}

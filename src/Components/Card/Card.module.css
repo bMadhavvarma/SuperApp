@@ -1,0 +1,38 @@
+
+.profileDetail{
+    background-color: #5746EA; 
+    height: 40vh;
+    width: 75vh;
+  position: absolute;
+  margin: 1.0rem 2.0rem ;
+  padding:15px ;
+  border-radius: 10px;
+ }
+ .profileDetail img{
+     height: 190px;
+     position: absolute;
+ }
+ .profileDetail h1{
+     font-family: Roboto;
+ font-size: 15px;
+ font-weight: 100;
+ line-height: 21.67px;
+ letter-spacing: 0.02em;
+ font-weight: 400;
+ margin-left: 105px;
+ color: white;
+ }
+ .profileDetail p{
+ font-family: Roboto;
+ font-weight: 100;
+ font-size: 15px;
+ margin-left: 105px;
+ margin-top: 10px;
+ font-weight: 400;
+ line-height: 21.67px;
+ color: white;
+ }
+ .genreDetail{
+    margin-left: 18vh;
+ }
+ 

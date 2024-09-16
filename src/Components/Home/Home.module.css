@@ -1,0 +1,16 @@
+.homepage{
+    background-color: black;
+    height: 100vh;
+}
+.but{
+    height: 30px;
+    bottom: 0;
+    margin-left: 85%;
+    margin-top:11%;
+    background-color: #148A08;
+    border: none;
+    font-family: 'DM Sans';
+    color: white;
+    width: 95px;
+    border-radius: 30px;
+}

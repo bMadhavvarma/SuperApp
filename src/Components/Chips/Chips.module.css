@@ -1,0 +1,16 @@
+.list{
+    display: inline-block;
+}
+.container{
+    color: white;
+    background-color: #148A08;
+  margin-right: 10px;
+  border-radius: 20px;
+  width: 95px;
+  align-items: center;
+  font-family: Roboto;
+  padding-top: 3px;
+  font-weight: 400;
+    height: 25px;
+    text-align: center;
+}

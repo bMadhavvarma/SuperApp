@@ -1,0 +1,35 @@
+.GenreContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allows the items to wrap onto the next line */
+    gap: 10px; /* Adds space between the genre items */
+    margin-top: 10px;
+    height: 20vh; /* Limits the container height to 20% of the viewport height */
+    justify-content: flex-start; /* Align items at the start */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding-right: 10px; /* Adds a small padding to accommodate the scrollbar */
+}
+
+.GenreDetailContainer {
+    color: white;
+    background-color: #9F94FF;
+    border-radius: 30px;
+    height: 30px;
+    width: 10vw;
+    padding: 8px 12px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center; /* Center the text inside */
+    align-items: center; /* Vertically center text */
+    white-space: nowrap; /* Prevent text from wrapping inside the container */
+    flex-shrink: 0; /* Prevents shrinking when the container is small */
+}
+
+/* Optional scrollbar styling */
+.GenreContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.GenreContainer::-webkit-scrollbar-thumb {
+    background-color: #9F94FF; /* Color of the scrollbar */
+    border-radius: 10px;
+}

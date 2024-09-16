@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './card.module.css';
+import styles from './Card.module.css';
 import profileimage from "../../assets/image 15.png";
 import GenreDetails from '../GenreDetails/GenreDetails';
 

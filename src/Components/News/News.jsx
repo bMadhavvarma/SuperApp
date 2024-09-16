@@ -24,7 +24,7 @@ function News() {
     if (articles.length > 0) {
       const interval = setInterval(() => {
         setCurrentArticleIndex((prevIndex) => (prevIndex + 1) % articles.length);
-      }, 10000); // 10000ms = 10 seconds
+      }, 1000); // 10000ms = 10 seconds
 
       return () => clearInterval(interval); // Clear interval on unmount
     }

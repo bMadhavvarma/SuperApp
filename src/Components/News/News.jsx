@@ -9,14 +9,19 @@ function News() {
   const [error, setError] = useState(null);
 
   const fetchNews = async () => {
-    const requrl = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=80539eb2fc2e4d4c8c5c86ec05d3c6e6";
+    const requrl =
+      "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=80539eb2fc2e4d4c8c5c86ec05d3c6e6";
 
     try {
       setLoading(true);
-      const response = await axios.get(requrl);
+      const response = await axios.get(requrl, {
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-      if (response.data.status === "error") {
-        throw new Error(response.data.message);
+      if (response.data.status !== "ok") {
+        throw new Error(response.data.message || "Failed to fetch news");
       }
 
       setArticles(response.data.articles || []);
@@ -32,11 +37,14 @@ function News() {
   useEffect(() => {
     fetchNews();
 
-    const interval = articles.length
-      ? setInterval(() => {
-          setCurrentArticleIndex((prevIndex) => (prevIndex + 1) % articles.length);
-        }, 10000)
-      : null;
+    const interval =
+      articles.length > 0
+        ? setInterval(() => {
+            setCurrentArticleIndex(
+              (prevIndex) => (prevIndex + 1) % articles.length
+            );
+          }, 10000)
+        : null;
 
     return () => interval && clearInterval(interval);
   }, [articles]);

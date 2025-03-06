@@ -3,49 +3,70 @@ import axios from "axios";
 import styles from "./News.module.css";
 
 function News() {
-  const [articles, setArticles] = useState([]); // Store news articles
-  const [currentArticleIndex, setCurrentArticleIndex] = useState(0); // Track the current article
+  const [articles, setArticles] = useState([]);
+  const [currentArticleIndex, setCurrentArticleIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchNews = async () => {
-    const requrl = "https://newsapi.org/v2/everything?q=tesla&from=2025-02-06&sortBy=publishedAt&apiKey=80539eb2fc2e4d4c8c5c86ec05d3c6e6";
+    const requrl = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=80539eb2fc2e4d4c8c5c86ec05d3c6e6";
 
     try {
+      setLoading(true);
       const response = await axios.get(requrl);
-      console.log("News Data:", response.data); // Debugging
-      setArticles(response.data.articles || []); // Store fetched articles
-    } catch (error) {
-      console.error("Error fetching news:", error);
-      setArticles([]); // Prevent crashes by setting an empty array
+
+      if (response.data.status === "error") {
+        throw new Error(response.data.message);
+      }
+
+      setArticles(response.data.articles || []);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+      setArticles([]);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchNews(); // Fetch news on mount
+    fetchNews();
 
-    // Auto-refresh article every 10 seconds
-    const interval = setInterval(() => {
-      setCurrentArticleIndex((prevIndex) => (prevIndex + 1) % articles.length);
-    }, 10000); // 10 seconds
+    const interval = articles.length
+      ? setInterval(() => {
+          setCurrentArticleIndex((prevIndex) => (prevIndex + 1) % articles.length);
+        }, 10000)
+      : null;
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
+    return () => interval && clearInterval(interval);
   }, [articles]);
 
-  const currentArticle = articles[currentArticleIndex] || {}; // Get current article safely
+  const currentArticle = articles[currentArticleIndex] || {};
 
   return (
     <div className={styles.newsContainer}>
-      <div className={styles.topContainer}>
-        <img
-          src={currentArticle.urlToImage || "https://via.placeholder.com/400"}
-          alt={currentArticle.title || "News Image"}
-        />
-        <div className={styles.heading}>
-          <h1>{currentArticle.title || "Loading news..."}</h1>
-        </div>
-      </div>
-      <div className={styles.bottomContainer}>
-        <p>{currentArticle.description || "Please wait while we load the latest news."}</p>
-      </div>
+      {loading ? (
+        <h2>Loading news...</h2>
+      ) : error ? (
+        <h2 style={{ color: "red" }}>Error: {error}</h2>
+      ) : articles.length === 0 ? (
+        <h2>No news found.</h2>
+      ) : (
+        <>
+          <div className={styles.topContainer}>
+            <img
+              src={currentArticle.urlToImage || "https://via.placeholder.com/400"}
+              alt={currentArticle.title || "News Image"}
+            />
+            <div className={styles.heading}>
+              <h1>{currentArticle.title}</h1>
+            </div>
+          </div>
+          <div className={styles.bottomContainer}>
+            <p>{currentArticle.description}</p>
+          </div>
+        </>
+      )}
     </div>
   );
 }
